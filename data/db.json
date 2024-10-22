@@ -1,19 +1,19 @@
 {
-    "items":[
+    "items": [
         {
-            "id":1,
-            "checked":false,
-            "item":"my website"
+            "id": 1,
+            "checked": false,
+            "item": "my website"
         },
         {
-            "id":2,
-            "checked":true,
-            "item":"coding"
+            "id": 2,
+            "checked": true,
+            "item": "coding"
         },
         {
-            "id":3,
-            "checked":false,
-            "item":"pratice"
+            "id": 3,
+            "checked": false,
+            "item": "practice"
         }
     ]
 }

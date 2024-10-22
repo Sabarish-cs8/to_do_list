@@ -8,7 +8,7 @@ import SearchItem from "./SearchItem";
 import apiRequest from "./apiRequest";
 
 export default function App() {
-  const API_URL = "http://localhost:3500";
+  const API_URL = "http://localhost:3500/items";
   const [items, setItems] = useState([]);
 
   const [newItem, setNewItem] = useState("");
@@ -18,6 +18,14 @@ export default function App() {
   const [fetchError, setfetchError] = useState(null);
 
   const [isloading, setisloading] = useState(true);
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => registration.unregister());
+      });
+    }
+  }, []);
 
   useEffect(() => {
     //async try and catch method
@@ -30,7 +38,8 @@ export default function App() {
         setItems(listitems);
         setfetchError(null);
       } catch (err) {
-        setfetchError(err.messsage);
+        console.error("Fetch error: ", err);
+        setfetchError(err.message);
       } finally {
         setisloading(false);
       }
